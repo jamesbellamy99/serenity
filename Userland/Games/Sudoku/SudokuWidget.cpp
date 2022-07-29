@@ -116,24 +116,28 @@ void SudokuWidget::keydown_event(GUI::KeyEvent& event)
             update();
         }
         break;
-    case KeyCode::Key_A:
-    case KeyCode::Key_Left:
-        move_active_square(-1, 0);
-        update();
-        break;
-    case KeyCode::Key_D:
-    case KeyCode::Key_Right:
-        move_active_square(1, 0);
-        update();
-        break;
     case KeyCode::Key_W:
     case KeyCode::Key_Up:
+    case KeyCode::Key_I:
         move_active_square(0, -1);
+        update();
+        break;
+    case KeyCode::Key_A:
+    case KeyCode::Key_Left:
+    case KeyCode::Key_J:
+        move_active_square(-1, 0);
         update();
         break;
     case KeyCode::Key_S:
     case KeyCode::Key_Down:
+    case KeyCode::Key_K:
         move_active_square(0, 1);
+        update();
+        break;
+    case KeyCode::Key_D:
+    case KeyCode::Key_Right:
+    case KeyCode::Key_L:
+        move_active_square(1, 0);
         update();
         break;
     default:
