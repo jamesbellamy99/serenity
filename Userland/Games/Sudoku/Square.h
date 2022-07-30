@@ -9,14 +9,14 @@
 class Square {
 public:
     Square(int x, int y);
-    int get_value() { return m_value; };
-    int get_x() { return m_x; };
-    int get_y() { return m_y; };
+    int get_value() const { return m_value; };
+    int get_x() const { return m_x; };
+    int get_y() const { return m_y; };
     void set_value(int value);
     void set_fixed(bool is_fixed) { m_fixed = is_fixed; };
-    bool is_fixed() { return m_fixed; };
+    bool is_fixed() const { return m_fixed; };
     void set_answer(int value);
-    bool is_correct();
+    bool is_correct() const;
 
 private:
     int m_x;
