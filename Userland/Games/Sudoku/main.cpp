@@ -92,7 +92,7 @@ ErrorOr<int> serenity_main(Main::Arguments arguments)
             window, "Well Done. Would you like to play again?"sv,
             "Congratulations!"sv, GUI::MessageBox::Type::Question,
             GUI::MessageBox::InputType::YesNo);
-        if (play_again == GUI::MessageBox::ExecYes)
+        if (play_again == GUI::Dialog::ExecResult::Yes)
             widget->new_game();
     };
 
