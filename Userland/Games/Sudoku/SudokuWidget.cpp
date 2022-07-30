@@ -10,8 +10,6 @@
 #include <LibGUI/Painter.h>
 #include <LibGUI/Window.h>
 #include <LibGfx/Color.h>
-#include <LibGfx/Font.h>
-#include <LibGfx/FontDatabase.h>
 
 void SudokuWidget::paint_event(GUI::PaintEvent& event)
 {

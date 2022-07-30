@@ -5,6 +5,7 @@
  */
 
 #include "Board.h"
+#include "LibGUI/Dialog.h"
 #include "SudokuWidget.h"
 #include <LibConfig/Client.h>
 #include <LibCore/System.h>
