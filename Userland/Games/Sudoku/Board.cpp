@@ -135,7 +135,7 @@ Vector<int> Board::get_sub_square(Vector<Vector<Square>>* squares, int x,
 
 Vector<int> Board::generate_possible_values(Vector<Vector<Square>>* squares, int x, int y)
 {
-    Vector<bool> options = { true, true, true, true, true, true, true, true, true };
+    AK::Array<bool, 9> options = { true, true, true, true, true, true, true, true, true };
 
     for (size_t i = 0; i < m_dimension; i++) {
         int row_value = squares->at(x)[i].get_value();
