@@ -37,7 +37,7 @@ ErrorOr<int> serenity_main(Main::Arguments arguments)
     TRY(Core::System::pledge(
         "stdio rpath wpath cpath recvfd sendfd thread proc exec"));
 
-    auto app_icon = TRY(GUI::Icon::try_create_default_icon("app-sudoku"));
+    auto app_icon = TRY(GUI::Icon::try_create_default_icon("app-sudoku"sv));
 
     auto window = TRY(GUI::Window::try_create());
     auto widget = TRY(window->try_set_main_widget<SudokuWidget>());
@@ -46,10 +46,10 @@ ErrorOr<int> serenity_main(Main::Arguments arguments)
     widget->set_board(&board);
 
     TRY(Core::System::unveil("/res", "r"));
+    ;
     TRY(Core::System::unveil("/etc/passwd", "r"));
-    TRY(Core::System::unveil("/tmp/portal/launch", "rw"));
-    TRY(Core::System::unveil(Core::StandardPaths::home_directory().characters(),
-        "wcbr"));
+    TRY(Core::System::unveil("/tmp/100/portal/launch", "rw"));
+    TRY(Core::System::unveil(Core::StandardPaths::home_directory(), "wcbr"sv));
     TRY(Core::System::unveil(nullptr, nullptr));
 
     window->set_title("Sudoku");
@@ -73,7 +73,7 @@ ErrorOr<int> serenity_main(Main::Arguments arguments)
 
     TRY(game_menu->try_add_action(GUI::Action::create(
         "&New Game", { Mod_None, Key_F2 },
-        TRY(Gfx::Bitmap::try_load_from_file("/res/icons/16x16/reload.png")),
+        TRY(Gfx::Bitmap::try_load_from_file("/res/icons/16x16/reload.png"sv)),
         [&](auto&) { widget->new_game(); })));
 
     widget->set_show_errors(false);
@@ -89,8 +89,8 @@ ErrorOr<int> serenity_main(Main::Arguments arguments)
 
     widget->on_win = [&] {
         auto play_again = GUI::MessageBox::show(
-            window, String::formatted("Well Done. Would you like to play again?"),
-            "Congratulations!", GUI::MessageBox::Type::Question,
+            window, "Well Done. Would you like to play again?"sv,
+            "Congratulations!"sv, GUI::MessageBox::Type::Question,
             GUI::MessageBox::InputType::YesNo);
         if (play_again == GUI::MessageBox::ExecYes)
             widget->new_game();
